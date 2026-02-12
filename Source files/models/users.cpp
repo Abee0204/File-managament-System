@@ -50,4 +50,39 @@ namespace models
     {
         this->role = role ;
     }
+
+    //utility
+    std::string user::roleToString() const
+    {
+        return (role == Role::Admin) ? "Admin" : "User";
+    }
+
+    //converting user obj to string 
+    std::string user::serialize() const
+    {
+        std::ostringstream oss;
+        oss << id << "," << Username <<"," <<password <<","<< roleToString();
+        return oss.str();
+    }
+
+    //converting string back to user obj
+    user user::deserialize(const std::string& data)
+    {
+        std::istringstream iss(data);
+        std::string token;
+
+        int id;
+        std::string Username, password , roleStr;
+
+        std::getline(iss, token, ',');
+        id = std::stoi(token);
+
+        std::getline(iss, Username , ',');
+        std::getline(iss, password , ',');
+        std::getline(iss, roleStr , ',');
+
+        Role role = (roleStr == "Admin") ? Role::Admin : Role::User;
+
+        return user(id, Username, password , role);
+    }
 }
