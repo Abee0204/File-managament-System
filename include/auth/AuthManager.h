@@ -9,7 +9,8 @@ class AuthService
     private:
     std::vector <models::user> Users; //store all users
     void loadUsers();
-    void saveUser(const models::user& user);
+    //void saveUser(const models::user& user);
+    void saveUsers();
     bool userExists(const std::string& username);
 
     public:

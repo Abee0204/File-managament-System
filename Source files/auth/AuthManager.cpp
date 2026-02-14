@@ -30,6 +30,31 @@ void AuthService::loadUsers()
     file.close();
 }
 
+/*
+void AuthService::saveUser(const models::user& user)
+{
+    std::ofstream file("data/users.db" , std::ios::app);
+
+    if(!file.is_open()) return;
+
+    file << user.getId() <<","<<user.getUsername() <<","<<user.getPassword() <<","<<(user.getRole() == models::Role::Admin ? "Admin" : "User")<< "\n";
+    file.close();
+}
+*/
+
+void AuthService::saveUsers()
+{
+    std::ofstream file("data/users.db");
+
+    if(!file.is_open()) return;
+
+    for(const auto& user: Users)
+    {
+        file << user.getId() <<","<<user.getUsername() <<","<<user.getPassword() <<","<<(user.getRole() == models::Role::Admin ? "Admin" : "User")<< "\n";
+    }
+    file.close();
+}
+
 AuthService::AuthService()
 {
     loadUsers();
