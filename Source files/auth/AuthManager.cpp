@@ -55,6 +55,17 @@ void AuthService::saveUsers()
     file.close();
 }
 
+bool AuthService::userExists(const std::string& username)
+{
+    for(const auto& user : Users)
+    {
+        if(user.getUsername() == username)
+        return true;
+    }
+
+    return false;
+}
+
 AuthService::AuthService()
 {
     loadUsers();
