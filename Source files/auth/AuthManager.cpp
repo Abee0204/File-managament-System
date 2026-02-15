@@ -55,7 +55,7 @@ void AuthService::saveUsers()
     file.close();
 }
 
-bool AuthService::userExists(const std::string& username)
+bool AuthService::userExists(const std::string& username) const
 {
     for(const auto& user : Users)
     {
@@ -64,6 +64,36 @@ bool AuthService::userExists(const std::string& username)
     }
 
     return false;
+}
+
+bool AuthService::registerUser(const std::string& username , const std::string& password , models::Role role)
+{
+    if(userExists(username)) return false;
+
+    // models::user newUser;
+    // newUser.setUsername(username);
+    // newUser.setPassword(password);
+    // newUser.setRole(role);
+
+    int newID = Users.size()+1;
+
+    models::user newUser(newID , username , password , role);
+    
+    Users.push_back(newUser);
+
+    saveUsers();
+    return true;
+}
+
+models::user* AuthService::loginUser(const std::string& username , const std::string& password)
+{
+    for(auto& user :Users)
+    {
+        if(user.getUsername() == username && user.getPassword() == password)
+        return &user;
+
+        return nullptr;
+    }
 }
 
 AuthService::AuthService()
