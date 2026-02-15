@@ -92,8 +92,8 @@ models::user* AuthService::loginUser(const std::string& username , const std::st
         if(user.getUsername() == username && user.getPassword() == password)
         return &user;
 
-        return nullptr;
     }
+    return nullptr;
 }
 
 AuthService::AuthService()
