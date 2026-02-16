@@ -2,7 +2,7 @@
 
 #include<vector>
 #include<string>
-#include"models\User.h"
+#include"models/User.h"
 
 class AuthService
 {
@@ -11,13 +11,13 @@ class AuthService
     void loadUsers();
     //void saveUser(const models::user& user);
     void saveUsers();
-    bool userExists(const std::string& username);
+    bool userExists(const std::string& username)const;
 
     public:
     AuthService(); //constructor
     //register user
     bool registerUser(const std::string& username ,const std::string& password , models::Role role);
     //login 
-    models::user loginUser(const std::string& username , const std::string& password);
+    models::user* loginUser(const std::string& username , const std::string& password);
 
 };

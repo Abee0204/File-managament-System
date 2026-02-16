@@ -1,4 +1,4 @@
-#include"include\auth\AuthManager.h"
+#include"auth/AuthManager.h"
 #include<fstream>
 #include<iostream>
 #include<sstream>
