@@ -1,0 +1,4 @@
+.gitignore
+include\auth\AuthManager.h.gch
+include\models\User.h.gch
+app.exe
