@@ -9,9 +9,10 @@ int main()
     std::cout << "Enter choice :\n 1.Register\n 2.Login\n 3.Exit\n"
               << std::endl;
     std::cin >> choice;
+    std::string username, password;
     while (1)
     {
-        std::string username, password;
+        
         if (choice == 1)
         {
             std::cout << "Enter Username:" << std::endl;
