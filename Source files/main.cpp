@@ -4,12 +4,47 @@
 int main()
 {
     AuthService auth;
-    auth.registerUser("Abee", "Ayu", models::Role::Admin );
 
-    auto userTesting = auth.loginUser("Abee", "Ayu" );
+    int choice;
+    std::cout << "Enter choice :\n 1.Register\n 2.Login\n 3.Exit\n"
+              << std::endl;
+    std::cin >> choice;
+    while (1)
+    {
+        std::string username, password;
+        if (choice == 1)
+        {
+            std::cout << "Enter Username:" << std::endl;
+            std::cin >> username;
 
-    if(userTesting!=nullptr)
-    std::cout<<"Testing successfull";
-    else
-    std::cout<<"something failed";
+            std::cout << "Enter Password:" << std::endl;
+            std::cin >> password;
+
+            if (auth.registerUser(username, password))
+                std::cout << "Registration successful.\n";
+            else
+                std::cout << "User already exists.\n";
+        }
+        else if (choice == 2)
+        {
+            std::cout << "Enter Username:" << std::endl;
+            std::cin >> username;
+
+            std::cout << "Enter Password:" << std::endl;
+            std::cin >> password;
+
+            auto user = auth.loginUser(username, password);
+            if (user != nullptr)
+            {
+                std::cout << "Login successful.\n";
+                break;
+            }
+            else
+                std::cout << "Login failed.\n";
+        }
+        else if (choice == 3)
+            return 0;
+    }
+
+    return 0;
 }

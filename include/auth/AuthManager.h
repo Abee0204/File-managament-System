@@ -16,7 +16,7 @@ class AuthService
     public:
     AuthService(); //constructor
     //register user
-    bool registerUser(const std::string& username ,const std::string& password , models::Role role);
+    bool registerUser(const std::string& username ,const std::string& password);
     //login 
     models::user* loginUser(const std::string& username , const std::string& password);
 

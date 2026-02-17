@@ -66,7 +66,7 @@ bool AuthService::userExists(const std::string& username) const
     return false;
 }
 
-bool AuthService::registerUser(const std::string& username , const std::string& password , models::Role role)
+bool AuthService::registerUser(const std::string& username , const std::string& password )
 {
     if(userExists(username)) return false;
 
@@ -77,7 +77,7 @@ bool AuthService::registerUser(const std::string& username , const std::string& 
 
     int newID = Users.size()+1;
 
-    models::user newUser(newID , username , password , role);
+    models::user newUser(newID , username , password , models::Role::User);
     
     Users.push_back(newUser);
 
